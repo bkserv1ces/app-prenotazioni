@@ -558,6 +558,14 @@ strong {
   padding-top: 130px;
 }
 
+.prenotazioni-section {
+  background-image: url('../images/nainoa-shizuru-unsplash-blur.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 130px;
+}
+
 .ticket-form {
   background: var(--white-color);
   border-radius: var(--border-radius-medium);
@@ -580,6 +588,12 @@ strong {
   margin-left: 35px;
   width: 100%;
   height: 100%;
+}
+
+.off-margin{
+  color: var(--p-color);
+  margin-bottom: 50px;
+  font-size: 12px;
 }
 
 
@@ -904,6 +918,10 @@ strong {
 
 .social-icon-link span:hover::before{
   animation: spinAround 2s linear infinite;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
 }
 
 @keyframes spinAround {

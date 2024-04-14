@@ -1,1 +1,31 @@
-<p>list-prenotazione works!</p>
+<section class="prenotazioni-section section-padding">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center mb-40">Tutte le prenotazioni</h2>
+            <table class="rwd-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Numero di Persone</th>
+                        <th>Tipo Tavolo</th>
+                        <th>Telefono</th>
+                        <th>Pagato</th>
+                        <th>Codice</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let p of prenotazioni">
+                  <td>{{p.cliente_nome}}</td>
+                  <td>{{p.cliente_email}}</td>
+                  <!--<td>{{p.numero_persone}}</td>
+                  <td>{{p.tipo_tavolo}}</td>
+                  <td>{{p.telefono}}</td>
+                  <td>{{p.pagato}}</td>
+                  <td>{{p.codice_QR}}</td> -->
+                </tr>
+              </table>
+        </div>
+    </div>
+</section>

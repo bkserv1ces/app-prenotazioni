@@ -1,40 +1,55 @@
 {
-  "hash": "62950bb1",
-  "configHash": "7f2c85e1",
+  "hash": "665c3ff8",
+  "configHash": "655001eb",
   "lockfileHash": "6b6c83be",
-  "browserHash": "94e52bfc",
+  "browserHash": "4c7fa34a",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "18045cf6",
+      "fileHash": "86c691ab",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "ec942148",
+      "fileHash": "386aee03",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "cdd3b67c",
+      "fileHash": "0886125d",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "6afcaa37",
+      "fileHash": "9f25099e",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "c634083a",
+      "needsInterop": false
+    },
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "b02d70d3",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-LXQ24TK6": {
-      "file": "chunk-LXQ24TK6.js"
+    "chunk-J27E2YR3": {
+      "file": "chunk-J27E2YR3.js"
     },
-    "chunk-5OTNW7E7": {
-      "file": "chunk-5OTNW7E7.js"
+    "chunk-N7OLQCDJ": {
+      "file": "chunk-N7OLQCDJ.js"
+    },
+    "chunk-MHFZ3VIA": {
+      "file": "chunk-MHFZ3VIA.js"
     },
     "chunk-TMUGLGNE": {
       "file": "chunk-TMUGLGNE.js"

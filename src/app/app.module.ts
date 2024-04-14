@@ -10,6 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { NewPrenotazioneComponent } from './components/new-prenotazione/new-prenotazione.component';
 import { ListPrenotazioneComponent } from './components/list-prenotazione/list-prenotazione.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { DeletePrenotazioneComponent } from './components/delete-prenotazione/delete-prenotazione.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { BannerComponent } from './components/banner/banner.component';
     LoginComponent,
     NewPrenotazioneComponent,
     ListPrenotazioneComponent,
-    BannerComponent
+    BannerComponent,
+    DeletePrenotazioneComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
