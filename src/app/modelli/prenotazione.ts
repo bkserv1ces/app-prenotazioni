@@ -1,5 +1,5 @@
 export class Prenotazione {
-/*     id: number;
+    id: number;
     id_evento: number;
     cliente_nome: string;
     cliente_email: string;
@@ -7,9 +7,9 @@ export class Prenotazione {
     numero_persone: number;
     tipo_tavolo: string;
     pagato: boolean;
-    codice_QR: string; */
-    
-/*     constructor(
+    codice_QR: string;
+
+    constructor(
       id: number,
       id_evento: number,
       cliente_nome: string,
@@ -29,10 +29,5 @@ export class Prenotazione {
         this.tipo_tavolo = tipo_tavolo;
         this.pagato = pagato;
         this.codice_QR = codice_QR;
-      } */
-
-      constructor(
-        public cliente_nome: string,
-        public cliente_email: string,
-        ) {}
+      }
 }

@@ -1,107 +1,132 @@
 <section class="ticket-section section-padding">
-    <div class="section-overlay"></div>
+  <div class="section-overlay"></div>
 
-    <div class="container">
-        <div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-10 mx-auto">
+        <form
+          class="custom-form ticket-form mb-5 mb-lg-0"
+        >
+          <h2 class="text-center mb-4">Get started here</h2>
 
-            <div class="col-lg-6 col-10 mx-auto">
-                <!-- <form #form="ngForm" class="custom-form ticket-form mb-5 mb-lg-0" (ngSubmit)="onSubmit()">
-                    <h2 class="text-center mb-40">Nouva Prenotazione</h2>
+          <div class="ticket-form-body">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-12">
+                <input
+                  type="text"
+                  id="ticket-form-name"
+                  class="form-control"
+                  placeholder="Nome e Cognome"
+                  formControlName="cliente_nome"
+                  required
+                />
+              </div>
 
-                    <div class="ticket-form-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="text" name="ticket-form-name" id="ticket-form-name" [(ngModel)]="model.cliente_nome" class="form-control" placeholder="Nome e Cognome">
-                            </div>
-                            <input type="hidden" name="ticket-form-code" id="ticket-form-code" [(ngModel)]="model.codice_QR" class="form-control">
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="email" name="ticket-form-email" id="ticket-form-email" [(ngModel)]="model.cliente_email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <input
+                  type="email"
+                  id="ticket-form-name"
+                  class="form-control"
+                  placeholder="Email"
+                  formControlName="cliente_email"
+                  required
+                />
+              </div>
+            </div>
 
-                        <input type="tel" class="form-control" name="ticket-form-phone" placeholder="Telefono 3334442222" [(ngModel)]="model.telefono">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-12">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Telefono"
+                  formControlName="telefono"
+                  required=""
+                />
+              </div>
 
-                        <input type="number" name="ticket-form-number" id="ticket-form-number" class="form-control" [(ngModel)]="model.numero_persone" placeholder="Numero di persone">
+              <div class="col-lg-6 col-md-6 col-12">
+                <input
+                type="number"
+                id="ticket-form-number"
+                class="form-control"
+                placeholder="Numero di persone"
+                formControlName="numero_persone"
+                required
+              />
+              </div>
+            </div>
 
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <span class="off-margin">Max 10 persone | {{first_category_price}}</span>
-                                <div class="form-check form-control">
-                                    <input class="form-check-input" type="checkbox" [(ngModel)]="model.tipo_tavolo" name="TicketForm" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        {{first_category_name}}
-                                    </label>
-                                </div>
-                            </div>
+            <h6>Scegli il tipo di tavolo</h6>
 
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <span class="off-margin">Max 7 persone | {{second_category_price}}</span>
-                                <div class="form-check form-control">
-                                    <input class="form-check-input" type="checkbox" [(ngModel)]="model.tipo_tavolo" name="TicketForm" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        {{second_category_name}}
-                                    </label>
-                                </div>
-                            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-12">
+                <div class="form-check form-control">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Diamond
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-12">
+                <div class="form-check form-control">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Oro
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-12">
+                <div class="form-check form-control">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Standard
+                  </label>
+                </div>
+              </div>
+            </div>
 
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <span class="off-margin">Max 5 persone | {{third_category_price}}</span>
-                                <div class="form-check form-control">
-                                    <input class="form-check-input" type="checkbox" [(ngModel)]="model.tipo_tavolo" name="TicketForm" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        {{third_category_name}}
-                                    </label>
-                                </div>
-                            </div> 
-                        </div>
 
-                        
 
-                        <textarea name="ticket-form-message" rows="3" class="form-control" id="ticket-form-message" placeholder="Additional Request"></textarea>
-
-                        <div class="col-lg-4 col-md-10 col-8 mx-auto">
-                            <button type="submit" class="form-control" [disabled]="!form.valid">Prenota</button>
-                        </div>
-                    </div>
-                </form> -->
-            
-                <form #form="ngForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="name">Nome e Cognome</label>
-                        <input type="text" name="name" #name="ngModel" class="form-control" id="name" [(ngModel)] = "model.cliente_nome" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Email</label>
-                        <input type="text" name="email" #name="ngModel" class="form-control" id="email" [(ngModel)] = "model.cliente_email" required="">
-                    </div>
-                    <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
-                </form>
-                Now in the model: {{model.cliente_nome}} {{model.cliente_email}}
-            </div>	
-        </div>
+            <div class="col-lg-4 col-md-10 col-8 mx-auto">
+              <button type="submit" class="form-control">Prenota</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </section>
+<!-- <script>
+  // Générer le code aléatoire
+  var randomCode = generateRandomCode();
 
+  // Sélectionner l'input caché par son ID
+  var ticketFormCodeInput = document.getElementById("ticket-form-code");
 
-<script>
-    // Générer le code aléatoire
-var randomCode = generateRandomCode();
+  // Mettre à jour la valeur de l'input caché avec le code généré
+  ticketFormCodeInput.value = randomCode;
 
-// Sélectionner l'input caché par son ID
-var ticketFormCodeInput = document.getElementById('ticket-form-code');
-
-// Mettre à jour la valeur de l'input caché avec le code généré
-ticketFormCodeInput.value = randomCode;
-
-// Fonction pour générer un code aléatoire de 6 caractères en majuscules (lettres et chiffres)
-function generateRandomCode() {
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    var code = '';
+  // Fonction pour générer un code aléatoire de 6 caractères en majuscules (lettres et chiffres)
+  function generateRandomCode() {
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    var code = "";
     for (var i = 0; i < 6; i++) {
-        var randomIndex = Math.floor(Math.random() * characters.length);
-        code += characters.charAt(randomIndex);
+      var randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
     }
     return code;
-}
-
-</script>
+  }
+</script> -->

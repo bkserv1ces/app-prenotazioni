@@ -12,7 +12,7 @@ import { ListPrenotazioneComponent } from './components/list-prenotazione/list-p
 import { BannerComponent } from './components/banner/banner.component';
 import { DeletePrenotazioneComponent } from './components/delete-prenotazione/delete-prenotazione.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
