@@ -1,0 +1,76 @@
+{
+  "eventi": [
+    {
+      "id": "1",
+      "nome": "Bukaro Party - Serata Estiva",
+      "luogo": "Spiaggia Lido Blu, Rimini",
+      "data": "2024-07-20",
+      "orario": "21:00",
+      "DJ": "DJ Marco",
+      "artisti": [
+        "Artista 1",
+        "Artista 2"
+      ],
+      "descrizione": "Una serata unica sulla spiaggia con DJ Marco e altri artisti ospiti.",
+      "numero_telefono": [
+        "+39 123 456 7890",
+        "+39 012 345 6789"
+      ]
+    }
+  ],
+  "prenotazioni": [
+    {
+      "id": "1",
+      "id_evento": 1,
+      "tipo_tavolo": "Standard",
+      "numero_persone": 4,
+      "cliente_nome": "Mario Rossi",
+      "cliente_email": "mario@example.com",
+      "pagato": true,
+      "codice_QR": "ABC123"
+    },
+    {
+      "id": "2",
+      "id_evento": 1,
+      "tipo_tavolo": "Oro",
+      "numero_persone": 6,
+      "cliente_nome": "Anna Verdi",
+      "cliente_email": "anna@example.com",
+      "pagato": false,
+      "codice_QR": "SKHJ8F"
+    },
+    {
+      "id": "3",
+      "id_evento": 2,
+      "tipo_tavolo": "Diamante",
+      "numero_persone": 8,
+      "cliente_nome": "Luigi Bianchi",
+      "cliente_email": "luigi@example.com",
+      "pagato": true,
+      "codice_QR": "XYZ789"
+    },
+    {
+      "id": 202405079377,
+      "id_evento": 0,
+      "cliente_nome": "Brice Kamga",
+      "cliente_email": "brice@gmail.com",
+      "telefono": "6547891232",
+      "numero_persone": 14,
+      "tipo_tavolo": "Diamante",
+      "pagato": false,
+      "codice_QR": "HPPSJK"
+    }
+  ],
+  "amministratori": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123"
+    },
+    {
+      "id": "2",
+      "username": "manager",
+      "password": "manager456"
+    }
+  ]
+}

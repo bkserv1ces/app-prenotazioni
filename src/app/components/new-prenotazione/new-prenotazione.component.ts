@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { Prenotazione } from '../../modelli/prenotazione';
+import { PrenotazioneService } from '../../servizi/prenotazione.service';
 
 @Component({
   selector: 'app-new-prenotazione',
@@ -12,9 +13,11 @@ export class NewPrenotazioneComponent implements OnInit{
   public newPrenotazioneForm!: FormGroup;
   private codice_QR!: string;
   private id!: number;
+  submitted: boolean = false;
+  prenotazioni: Array<Prenotazione> = [];
   public prenotazione: Prenotazione = new Prenotazione(0,0,'','','',0,'',false,'');
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private prenotazioneService: PrenotazioneService){}
 
   ngOnInit(): void {
     this.generateRandomCodice();
@@ -51,10 +54,21 @@ export class NewPrenotazioneComponent implements OnInit{
     this.id = id;
   }
 
-  public saveData(){
-    console.log(this.newPrenotazioneForm);
-    console.log('valeurs: ', JSON.stringify(this.newPrenotazioneForm.value));
-    console.log('hello bk');
+  public onSubmit(){
+    this.submitted = true;
+    const newPrenotazione = new Prenotazione(
+      this.newPrenotazioneForm.value.id,
+      0,
+      this.newPrenotazioneForm.value.cliente_nome,
+      this.newPrenotazioneForm.value.cliente_email,
+      this.newPrenotazioneForm.value.telefono,
+      this.newPrenotazioneForm.value.numero_persone,
+      this.newPrenotazioneForm.value.tipo_tavolo,
+      this.newPrenotazioneForm.value.pagato,
+      this.newPrenotazioneForm.value.codice_QR
+    );
+    this.prenotazioneService.addPrenotazione(newPrenotazione).subscribe(prenotazione => this.prenotazioni.push(prenotazione));
+    this.newPrenotazioneForm.reset();
   }
 
 }

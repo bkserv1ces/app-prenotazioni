@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-10 mx-auto">
-        <form novalidate (ngSubmit)="saveData()" [formGroup]="newPrenotazioneForm"
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="newPrenotazioneForm"
           class="custom-form ticket-form mb-5 mb-lg-0">
           <h2 class="text-center mb-4">Get started here</h2>
 
@@ -108,11 +108,11 @@
 
 
             <div class="col-lg-10 col-md-10 col-10 text-center mx-auto">
-              <button type="submit" class="form-control" >Prenota</button>
+              <button type="submit" [disabled]="!newPrenotazioneForm.valid" class="form-control" >Prenota</button>
             </div>
 
             <!-- <div class="text-center">
-              <button type="submit" [disabled]="!newPrenotazioneForm.valid" class="btn btn-info">Prenota</button>
+              <button type="submit"  class="btn btn-info">Prenota</button>
             </div> -->
           </div>
         </form>
