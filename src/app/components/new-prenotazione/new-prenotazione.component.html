@@ -4,111 +4,129 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-10 mx-auto">
-        <form
-          class="custom-form ticket-form mb-5 mb-lg-0"
-        >
+        <form novalidate (ngSubmit)="saveData()" [formGroup]="newPrenotazioneForm"
+          class="custom-form ticket-form mb-5 mb-lg-0">
           <h2 class="text-center mb-4">Get started here</h2>
 
           <div class="ticket-form-body">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
-                <input
-                  type="text"
-                  id="ticket-form-name"
-                  class="form-control"
-                  placeholder="Nome e Cognome"
-                  formControlName="cliente_nome"
-                  required
-                />
+                <input type="text" class="form-control" placeholder="Nome e Cognome" formControlName="cliente_nome"
+                  [ngClass]="{
+                    'is-invalid':
+                    newPrenotazioneForm.get('cliente_nome')?.touched &&
+                    !newPrenotazioneForm.get('cliente_nome')?.valid
+                  }" />
+                <div class="invalid-feedback">
+                  <span *ngIf="newPrenotazioneForm.get('cliente_nome')?.errors?.['required']">
+                    Entrare Cognome e Nome
+                  </span>
+                  <span *ngIf="newPrenotazioneForm.get('cliente_nome')?.errors?.['minlength']">
+                    Minimo 4 caratteri
+                  </span>
+                </div>
               </div>
-
               <div class="col-lg-6 col-md-6 col-12">
-                <input
-                  type="email"
-                  id="ticket-form-name"
-                  class="form-control"
-                  placeholder="Email"
-                  formControlName="cliente_email"
-                  required
-                />
+                <input type="email" class="form-control" placeholder="Email" formControlName="cliente_email" [ngClass]="{
+                    'is-invalid':
+                    newPrenotazioneForm.get('cliente_email')?.touched &&
+                    !newPrenotazioneForm.get('cliente_email')?.valid
+                  }" />
+                <div class="invalid-feedback">
+                  <span *ngIf="newPrenotazioneForm.get('cliente_email')?.errors?.['required']">
+                    Entrare Email
+                  </span>
+                  <span *ngIf="newPrenotazioneForm.get('cliente_email')?.errors?.['email']">
+                    Email non è valida
+                  </span>
+                </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
-                <input
-                  type="tel"
-                  class="form-control"
-                  placeholder="Telefono"
-                  formControlName="telefono"
-                  required=""
-                />
+                <input type="tel" class="form-control" placeholder="Telefono" formControlName="telefono" [ngClass]="{
+                    'is-invalid':
+                    newPrenotazioneForm.get('telefono')?.touched &&
+                    !newPrenotazioneForm.get('telefono')?.valid
+                  }" />
+                <div class="invalid-feedback">
+                  <span *ngIf="newPrenotazioneForm.get('telefono')?.errors?.['required']">
+                    Numero di telefono richiesto
+                  </span>
+                  <span *ngIf="newPrenotazioneForm.get('telefono')?.errors?.['pattern']">
+                    Il numero di telefono non è coretto!
+                  </span>
+                </div>
               </div>
-
               <div class="col-lg-6 col-md-6 col-12">
-                <input
-                type="number"
-                id="ticket-form-number"
-                class="form-control"
-                placeholder="Numero di persone"
-                formControlName="numero_persone"
-                required
-              />
+                <input type="number" class="form-control" placeholder="Numero di Persone"
+                  formControlName="numero_persone" [ngClass]="{
+                    'is-invalid':
+                    newPrenotazioneForm.get('numero_persone')?.touched &&
+                    !newPrenotazioneForm.get('numero_persone')?.valid
+                  }" />
+                <div class="invalid-feedback">
+                  <span *ngIf="newPrenotazioneForm.get('numero_persone')?.errors?.['required']">
+                    Numero di persone richiesto
+                  </span>
+                  <span *ngIf="newPrenotazioneForm.get('numero_persone')?.errors?.['pattern']">
+                    Deve essere compreso tra 1 e 20!
+                  </span>
+                </div>
               </div>
             </div>
-
-            <h6>Scegli il tipo di tavolo</h6>
 
             <div class="row">
               <div class="col-lg-4 col-md-4 col-12">
                 <div class="form-check form-control">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Diamond
+                  <input class="form-check-input" formControlName="tipo_tavolo" type="radio" value="Diamante"/>
+                  <label class="form-check-label">
+                    Diamante
                   </label>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-12">
-                <div class="form-check form-control">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Oro
-                  </label>
+                <div class="form-check form-check-radio form-control">
+                  <input class="form-check-input" formControlName="tipo_tavolo" type="radio" value="Oro"/>
+                  <label class="form-check-label"> 
+                    Oro </label>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-12">
-                <div class="form-check form-control">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
+                <div class="form-check form-check-radio form-control">
+                  <input class="form-check-input" formControlName="tipo_tavolo" type="radio" value="Standard"/>
+                  <label class="form-check-label">
                     Standard
                   </label>
                 </div>
               </div>
             </div>
+            
+            <input type="hidden" formControlName="codice_QR">
+            <input type="hidden" formControlName="id">
 
 
-
-            <div class="col-lg-4 col-md-10 col-8 mx-auto">
-              <button type="submit" class="form-control">Prenota</button>
+            <div class="col-lg-10 col-md-10 col-10 text-center mx-auto">
+              <button type="submit" class="form-control" >Prenota</button>
             </div>
+
+            <!-- <div class="text-center">
+              <button type="submit" [disabled]="!newPrenotazioneForm.valid" class="btn btn-info">Prenota</button>
+            </div> -->
           </div>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<hr>
+
+<p>Valid: {{newPrenotazioneForm.valid}}</p>
+<p>Value: </p>
+<pre>{{newPrenotazioneForm.value | json }}</pre>
+
 <!-- <script>
   // Générer le code aléatoire
   var randomCode = generateRandomCode();
