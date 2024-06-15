@@ -2,8 +2,21 @@
     <div class="section-overlay"></div>
 
     <div class="container">
-        <div class="row">
+        <ng-template #errors>
+            <div class="text-danger">{{errorMessage}}</div>
+        </ng-template>
+        <div class="row" *ngIf="prenotazioni; else errors">
             <h2 class="text-center mb-40">Tutte le prenotazioni</h2>
+
+            <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchPrenotazione()">
+                <div class="input-group">
+                    <label class="input-group-text">Keyword:</label>
+                    <input type="text" class="form-control" formControlName="keyword">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
             <table class="rwd-table">
                 <thead>
                     <tr>
@@ -24,6 +37,11 @@
                   <td>{{p.telefono}}</td>
                   <td>{{p.pagato}}</td>
                   <td>{{p.codice_QR}}</td>
+                  <td *ngIf="logService.haRuolo('ADMIN')">
+                    <button (click)="handleDeletePrenotazione(p)" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
                 </tr>
               </table>
         </div>

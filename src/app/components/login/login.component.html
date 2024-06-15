@@ -1,14 +1,15 @@
 <div class="login-dark">
-  <form method="post">
+  <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
     <h4 class="sr-only text-center log-color">Login Admin</h4>
+    <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
     <div class="illustration">
       <i class="icon ion-ios-locked-outline"></i>
     </div>
     <div class="form-group">
       <input
         class="form-control"
-        type="username"
-        name="username"
+        type="text"
+        formControlName="username"
         placeholder="Username"
       />
     </div>
@@ -16,12 +17,12 @@
       <input
         class="form-control"
         type="password"
-        name="password"
+        formControlName="password"
         placeholder="Password"
       />
     </div>
     <div class="form-group text-center mtop20">
-      <button routerLink="" class="btn custom-btn" type="submit">Log In</button>
+      <button class="btn custom-btn" type="submit">Log In</button>
     </div>
   </form>
 </div>

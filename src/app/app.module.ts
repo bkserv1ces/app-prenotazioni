@@ -13,6 +13,9 @@ import { BannerComponent } from './components/banner/banner.component';
 import { DeletePrenotazioneComponent } from './components/delete-prenotazione/delete-prenotazione.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClientiComponent } from './components/clienti/clienti.component';
+import { TavoliComponent } from './components/tavoli/tavoli.component';
+import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewPrenotazioneComponent,
     ListPrenotazioneComponent,
     BannerComponent,
-    DeletePrenotazioneComponent
+    DeletePrenotazioneComponent,
+    ClientiComponent,
+    TavoliComponent,
+    AdminTemplateComponent
   ],
   imports: [
     BrowserModule,

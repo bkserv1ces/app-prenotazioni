@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { Prenotazione } from '../../modelli/prenotazione';
 import { PrenotazioneService } from '../../servizi/prenotazione.service';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-new-prenotazione',
@@ -12,10 +13,10 @@ export class NewPrenotazioneComponent implements OnInit{
 
   public newPrenotazioneForm!: FormGroup;
   private codice_QR!: string;
-  private id!: number;
+  private id!: string;
   submitted: boolean = false;
   prenotazioni: Array<Prenotazione> = [];
-  public prenotazione: Prenotazione = new Prenotazione(0,0,'','','',0,'',false,'');
+  public prenotazione: Prenotazione = new Prenotazione("",0,'','','',0,'',false,'', false);
 
   constructor(private fb: FormBuilder, private prenotazioneService: PrenotazioneService){}
 
@@ -23,7 +24,7 @@ export class NewPrenotazioneComponent implements OnInit{
     this.generateRandomCodice();
     this.generateRandomId();
     this.newPrenotazioneForm = this.fb.group({
-      id: [this.id, Validators.required],
+      id: [UUID.UUID(), Validators.required],
       cliente_nome: ['', [Validators.required, Validators.minLength(4)]],
       cliente_email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.minLength(10), Validators.maxLength(10)]],
@@ -50,7 +51,7 @@ export class NewPrenotazioneComponent implements OnInit{
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     const randomDigits = Math.floor(1000 + Math.random() * 9000); 
-    const id = parseInt(year + month + day + randomDigits.toString(), 10);
+    const id = year + month + day + randomDigits.toString();
     this.id = id;
   }
 
@@ -65,7 +66,8 @@ export class NewPrenotazioneComponent implements OnInit{
       this.newPrenotazioneForm.value.numero_persone,
       this.newPrenotazioneForm.value.tipo_tavolo,
       this.newPrenotazioneForm.value.pagato,
-      this.newPrenotazioneForm.value.codice_QR
+      this.newPrenotazioneForm.value.codice_QR,
+      this.newPrenotazioneForm.value.deleted
     );
     this.prenotazioneService.addPrenotazione(newPrenotazione).subscribe(prenotazione => this.prenotazioni.push(prenotazione));
     this.newPrenotazioneForm.reset();

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand">
             {{title}}
         </a>
 
@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                 <li class="nav-item">
-                    <a routerLink="/banner" routerLinkActive="active" class="nav-link click-scroll">Home</a>
+                    <a routerLink="" routerLinkActive="active" class="nav-link click-scroll">Home</a>
                 </li>
 <!--
                 <li class="nav-item">
@@ -29,10 +29,25 @@
                 </li>
  -->
                 <li class="nav-item">
+                    <a routerLink="/tavoli" routerLinkActive="active" class="nav-link click-scroll">Tavoli</a>
+                </li>
+
+                <li class="nav-item">
                     <a routerLink="/list-prenotazione" routerLinkActive="active" class="nav-link click-scroll">Prenotazioni</a>
                 </li>
+
+                <li class="nav-item">
+                    <a routerLink="/clienti" routerLinkActive="active" class="nav-link click-scroll">Clienti</a>
+                </li>
             </ul>
-            <a routerLink="/login" routerLinkActive="active" class="btn custom-btn d-lg-block d-none">Login</a>
+            <a *ngIf="!logService.isLoggato()" routerLink="/login" routerLinkActive="active" class="btn custom-btn d-lg-block d-none">Login</a>
+            <ul *ngIf="logService.isLoggato()" class="navbar-nav">
+                <li>
+                    <span style="color: var(--primary-color);">{{logService.UserLoggato!.username}} |</span> 
+                    <i (click)="handleLogout()" class="bi bi-box-arrow-right" style="color: var(--secondary-color);"></i>
+                </li>
+                
+            </ul>
         </div>
     </div>
 </nav>

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Prenotazione } from '../modelli/prenotazione';
+import { Observable, throwError } from 'rxjs';
+import { PagePrenotazione, Prenotazione } from '../modelli/prenotazione';
+import { UUID } from 'angular2-uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,13 @@ export class PrenotazioneService {
     return this.http.post<Prenotazione>(`${this.URL}/prenotazioni`, prenotazione);
   }
 
-  deletePrenotazione(id: number): Observable<{}>{
+  deletePrenotazione(id: string): Observable<{}>{
     return this.http.delete<Prenotazione>(`${this.URL}/prenotazioni/${id}`);
   }
+
+/*   searchPrenotazione(keyword : string): Observable<Prenotazione[]>{
+    return this.http.get<Prenotazione[]>(`${this.URL}/prenotazioni/`);
+  } */
 
 /*   updatePrenotazione(prenotazione: Prenotazione): Observable<Prenotazione>{
     return this.http.put<Prenotazione>(`${this.URL}/prenotazioni/${prenotazione.id}`, prenotazione);

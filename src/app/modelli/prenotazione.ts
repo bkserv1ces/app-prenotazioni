@@ -1,5 +1,7 @@
+import { UUID } from "angular2-uuid";
+
 export class Prenotazione {
-    public id: number;
+    public id: string;
     public id_evento: number;
     public cliente_nome: string;
     public cliente_email: string;
@@ -8,9 +10,10 @@ export class Prenotazione {
     public tipo_tavolo: string;
     public pagato: boolean;
     public codice_QR: string;
+    public deleted: boolean;
 
      constructor(
-      id: number,
+      id: string,
       id_evento: number,
       cliente_nome: string,
       cliente_email: string,
@@ -19,6 +22,7 @@ export class Prenotazione {
       tipo_tavolo: string,
       pagato: boolean,
       codice_QR: string,
+      deleted: boolean,
       ) {
         this.id = id;
         this.id_evento = id_evento;
@@ -29,5 +33,13 @@ export class Prenotazione {
         this.tipo_tavolo = tipo_tavolo;
         this.pagato = pagato;
         this.codice_QR = codice_QR;
+        this.deleted = deleted;
       } 
+}
+
+export interface PagePrenotazione {
+  prenotazioni : Prenotazione[];
+  page : number;
+  size : number;
+  totalPages : number;
 }
