@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PrenotazioneService } from '../../servizi/prenotazione.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoginService } from '../../servizi/login.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-prenotazione',
@@ -12,17 +13,22 @@ import { LoginService } from '../../servizi/login.service';
 })
 export class ListPrenotazioneComponent implements OnInit{
 
-  handleSearchPrenotazione() {
-    /* let keyword=this.searchFormGroup.value.keyword;
-    this.prenotazioneService.searchPrenotazione(keyword).subscribe({
-      next : prenotazioni =>{
-        this.prenotazioni=prenotazioni;
-      }
-    }) */
-  }
-
+  keyword: string = '';
+  prenotazioni: Array<Prenotazione> = [];
+  prenotazione$: Observable<Prenotazione[]> | undefined;
   errorMessage! : string;
   searchFormGroup! : FormGroup;
+
+  constructor(private prenotazioneService: PrenotazioneService, private fb : FormBuilder, public logService: LoginService, private route: Router){}
+
+
+handleUpdatePrenotazione(p: Prenotazione) {
+  this.route.navigateByUrl("/update-prenotazione/" + p.id);
+}
+
+  onSearch(): void {
+
+  }
 
   handleDeletePrenotazione(p: Prenotazione) {
     let conf=confirm("Sicuro di voler cancellare?");
@@ -35,10 +41,7 @@ export class ListPrenotazioneComponent implements OnInit{
     })
   }
 
-  prenotazioni: Array<Prenotazione> = [];
-  prenotazione$: Observable<Prenotazione[]> | undefined;
 
-  constructor(private prenotazioneService: PrenotazioneService, private fb : FormBuilder, public logService: LoginService){}
 
   ngOnInit(){
     this.searchFormGroup=this.fb.group({

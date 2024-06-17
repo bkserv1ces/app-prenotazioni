@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { Prenotazione } from '../../modelli/prenotazione';
 import { PrenotazioneService } from '../../servizi/prenotazione.service';
 import { UUID } from 'angular2-uuid';
+import { BannerComponent } from '../banner/banner.component';
 
 @Component({
   selector: 'app-new-prenotazione',
@@ -24,7 +25,7 @@ export class NewPrenotazioneComponent implements OnInit{
     this.generateRandomCodice();
     this.generateRandomId();
     this.newPrenotazioneForm = this.fb.group({
-      id: [UUID.UUID(), Validators.required],
+      id: [this.id, Validators.required],
       cliente_nome: ['', [Validators.required, Validators.minLength(4)]],
       cliente_email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.minLength(10), Validators.maxLength(10)]],
@@ -69,8 +70,15 @@ export class NewPrenotazioneComponent implements OnInit{
       this.newPrenotazioneForm.value.codice_QR,
       this.newPrenotazioneForm.value.deleted
     );
-    this.prenotazioneService.addPrenotazione(newPrenotazione).subscribe(prenotazione => this.prenotazioni.push(prenotazione));
-    this.newPrenotazioneForm.reset();
+    this.prenotazioneService.addPrenotazione(newPrenotazione).subscribe({
+      next : prenotazione => {
+        this.prenotazioni.push(prenotazione);
+        alert("Prenotazione effettuata con successo!");
+        this.newPrenotazioneForm.reset();
+      },
+      error : err => {
+        console.log(err);
+      }
+    })
   }
-
 }

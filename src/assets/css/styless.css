@@ -127,6 +127,10 @@ strong {
   font-weight: var(--font-weight-bold);
 }
 
+button.button-disabled {
+  background-color: #a1a1a1 !important;
+}
+
 .link-fx-1 {
   color: var(--white-color);
   position: relative;
@@ -375,8 +379,8 @@ strong {
   z-index: 9;
 }
 
-.navbar-brand,
-.navbar-brand:hover {
+.navbar-logo,
+.navbar-logo:hover {
   color: var(--white-color);
   font-size: var(--h5-font-size);
   font-weight: var(--font-weight-bold);

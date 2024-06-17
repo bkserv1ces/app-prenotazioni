@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand">
+        <a class="navbar-logo" routerLink="/BukaroParty">
             {{title}}
         </a>
 
-        <a routerLink="/login" routerLinkActive="active" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
+        <a *ngIf="!logService.isLoggato()" routerLink="/login" routerLinkActive="active" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,28 +23,25 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#">Artists</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#">Pricing</a>
-                </li>
  -->
                 <li class="nav-item">
                     <a routerLink="/tavoli" routerLinkActive="active" class="nav-link click-scroll">Tavoli</a>
                 </li>
 
-                <li class="nav-item">
+                <li *ngIf="logService.isLoggato()" class="nav-item">
                     <a routerLink="/list-prenotazione" routerLinkActive="active" class="nav-link click-scroll">Prenotazioni</a>
                 </li>
 
                 <li class="nav-item">
-                    <a routerLink="/clienti" routerLinkActive="active" class="nav-link click-scroll">Clienti</a>
+                    <a *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')" routerLink="/clienti" routerLinkActive="active" class="nav-link click-scroll">Clienti</a>
                 </li>
             </ul>
             <a *ngIf="!logService.isLoggato()" routerLink="/login" routerLinkActive="active" class="btn custom-btn d-lg-block d-none">Login</a>
+            
             <ul *ngIf="logService.isLoggato()" class="navbar-nav">
-                <li>
-                    <span style="color: var(--primary-color);">{{logService.UserLoggato!.username}} |</span> 
-                    <i (click)="handleLogout()" class="bi bi-box-arrow-right" style="color: var(--secondary-color);"></i>
+                <li style="color: var(--primary-color);">
+                    <span >{{logService.UserLoggato!.username}} | </span> 
+                    <i (click)="handleLogout()" class="bi bi-box-arrow-right"></i>
                 </li>
                 
             </ul>

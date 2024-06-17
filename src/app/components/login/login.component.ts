@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
   
     this.logService.login(username, password).subscribe({
       next : (appUser : AppUsers) => {
-        this.logService.authenticateUser(appUser).subscribe({
+        this.logService.savedUser(appUser).subscribe({
           next : (data) => {
-            this.router.navigateByUrl("");
+            this.router.navigateByUrl("/list-prenotazione");
           }
         })
       },

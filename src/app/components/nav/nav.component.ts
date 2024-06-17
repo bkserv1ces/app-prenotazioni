@@ -16,7 +16,7 @@ export class NavComponent {
   handleLogout() {
     this.logService.logout().subscribe({
       next : (data)=>{
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl("/BukaroParty");
       }
     })
   }

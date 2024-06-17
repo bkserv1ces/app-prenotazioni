@@ -12,9 +12,14 @@ export class LoginService {
   UserLoggato : AppUsers | undefined;
 
   constructor() { 
-    this.users.push({id : UUID.UUID(), username : "user1", password : "user", ruolo :["USER"]});
-    this.users.push({id : UUID.UUID(), username : "user2", password : "user", ruolo :["USER"]});
-    this.users.push({id : UUID.UUID(), username : "admin", password : "admin", ruolo :["USER", "ADMIN"]});
+    this.users.push({id: UUID.UUID(), username: "Brice", password: "brice", ruolo: ["USER"]});
+    this.users.push({id: UUID.UUID(), username: "User", password: "user", ruolo: ["USER"]});
+    this.users.push({id: UUID.UUID(), username: "Kamga", password: "kamga", ruolo: ["USER", "ADMIN"]});
+    
+    const savedUser = localStorage.getItem("logUser");
+    if (savedUser) {
+      this.UserLoggato = JSON.parse(savedUser) as AppUsers;
+    }
   }
 
   public login(username :string, password :string): Observable<AppUsers>{
@@ -29,10 +34,10 @@ export class LoginService {
     return of(appUser);
   }
 
-  public authenticateUser(appUser : AppUsers): Observable<boolean>{
+  public savedUser(appUser : AppUsers): Observable<boolean>{
     this.UserLoggato = appUser;
     localStorage.setItem("logUser", JSON.stringify({
-      username:appUser.username, ruolo:appUser.ruolo, jwt:"JWT_TOKEN"}));
+      username:appUser.username, ruolo:appUser.ruolo}));
     return of(true);
   }  
 
@@ -41,6 +46,7 @@ export class LoginService {
   }
 
   public isLoggato(){
+
     return this.UserLoggato != undefined;
   }
 

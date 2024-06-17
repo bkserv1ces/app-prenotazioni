@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ClientiComponent } from './components/clienti/clienti.component';
 import { TavoliComponent } from './components/tavoli/tavoli.component';
 import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
+import { UpdatePrenotazioneComponent } from './components/update-prenotazione/update-prenotazione.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminTemplateComponent } from './components/admin-template/admin-templa
     DeletePrenotazioneComponent,
     ClientiComponent,
     TavoliComponent,
-    AdminTemplateComponent
+    AdminTemplateComponent,
+    UpdatePrenotazioneComponent
   ],
   imports: [
     BrowserModule,

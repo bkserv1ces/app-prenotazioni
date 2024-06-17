@@ -2,13 +2,10 @@
     <div class="section-overlay"></div>
 
     <div class="container">
-        <ng-template #errors>
-            <div class="text-danger">{{errorMessage}}</div>
-        </ng-template>
-        <div class="row" *ngIf="prenotazioni; else errors">
-            <h2 class="text-center mb-40">Tutte le prenotazioni</h2>
+        <div class="row">
+            <h2 class="text-white text-center mb-40">Tutte le prenotazioni</h2>
 
-            <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchPrenotazione()">
+<!--             <form [formGroup]="searchFormGroup" (ngSubmit)="onSearch()">
                 <div class="input-group">
                     <label class="input-group-text">Keyword:</label>
                     <input type="text" class="form-control" formControlName="keyword">
@@ -16,12 +13,12 @@
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
-            </form>
+            </form> -->
             <table class="rwd-table">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
+                        <th *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">Email</th>
                         <th>Numero di Persone</th>
                         <th>Tipo Tavolo</th>
                         <th>Telefono</th>
@@ -31,13 +28,18 @@
                 </thead>
                 <tr *ngFor="let p of prenotazioni">
                   <td>{{p.cliente_nome}}</td>
-                  <td>{{p.cliente_email}}</td>
+                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">{{p.cliente_email}}</td>
                   <td>{{p.numero_persone}}</td>
                   <td>{{p.tipo_tavolo}}</td>
                   <td>{{p.telefono}}</td>
                   <td>{{p.pagato}}</td>
                   <td>{{p.codice_QR}}</td>
-                  <td *ngIf="logService.haRuolo('ADMIN')">
+                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')" >
+                    <button [routerLink]="['/update-prenotazione', p.id]" class="btn btn-success">
+                        <i class="bi bi-file"></i>
+                    </button>
+                  </td>
+                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')" >
                     <button (click)="handleDeletePrenotazione(p)" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </button>
