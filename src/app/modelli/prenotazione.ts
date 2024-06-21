@@ -10,7 +10,7 @@ export class Prenotazione {
     public tipo_tavolo: string;
     public pagato: boolean;
     public codice_QR: string;
-    public deleted: boolean;
+    public deleted: number;
 
      constructor(
       id: string,
@@ -22,7 +22,7 @@ export class Prenotazione {
       tipo_tavolo: string,
       pagato: boolean,
       codice_QR: string,
-      deleted: boolean,
+      deleted: number,
       ) {
         this.id = id;
         this.id_evento = id_evento;

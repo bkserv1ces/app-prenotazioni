@@ -1,4 +1,4 @@
-<section class="ticket-section section-padding">
+<!-- <section class="ticket-section section-padding">
     <div class="section-overlay"></div>
   
     <div class="container">
@@ -113,7 +113,7 @@
                   [disabled]="!editPrenotazioniFormGroup.valid"
                   [ngClass]="{'button-disabled': !editPrenotazioniFormGroup.valid}"
                   class="form-control">
-                  Prenota
+                  Modifica
                 </button>
               </div>
             </div>
@@ -128,25 +128,4 @@
   <p>Valid: {{editPrenotazioniFormGroup.valid}}</p>
   <p>Value: </p>
   <pre>{{editPrenotazioniFormGroup.value | json }}</pre>
-  
-  <!-- <script>
-    // Générer le code aléatoire
-    var randomCode = generateRandomCode();
-  
-    // Sélectionner l'input caché par son ID
-    var ticketFormCodeInput = document.getElementById("ticket-form-code");
-  
-    // Mettre à jour la valeur de l'input caché avec le code généré
-    ticketFormCodeInput.value = randomCode;
-  
-    // Fonction pour générer un code aléatoire de 6 caractères en majuscules (lettres et chiffres)
-    function generateRandomCode() {
-      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      var code = "";
-      for (var i = 0; i < 6; i++) {
-        var randomIndex = Math.floor(Math.random() * characters.length);
-        code += characters.charAt(randomIndex);
-      }
-      return code;
-    }
-  </script> -->
+ -->

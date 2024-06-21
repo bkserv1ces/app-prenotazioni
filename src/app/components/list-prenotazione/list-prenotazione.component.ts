@@ -13,21 +13,18 @@ import { Route, Router } from '@angular/router';
 })
 export class ListPrenotazioneComponent implements OnInit{
 
-  keyword: string = '';
   prenotazioni: Array<Prenotazione> = [];
   prenotazione$: Observable<Prenotazione[]> | undefined;
   errorMessage! : string;
-  searchFormGroup! : FormGroup;
 
   constructor(private prenotazioneService: PrenotazioneService, private fb : FormBuilder, public logService: LoginService, private route: Router){}
 
+  ngOnInit(){
+    this.handleGetAllPrenotazioni();
+  }
 
-handleUpdatePrenotazione(p: Prenotazione) {
-  this.route.navigateByUrl("/update-prenotazione/" + p.id);
-}
-
-  onSearch(): void {
-
+  handleUpdatePrenotazione(p: Prenotazione) {
+    this.route.navigateByUrl("/update-prenotazione/" + p.id);
   }
 
   handleDeletePrenotazione(p: Prenotazione) {
@@ -39,16 +36,6 @@ handleUpdatePrenotazione(p: Prenotazione) {
         this.prenotazioni.splice(index, 1);
       }
     })
-  }
-
-
-
-  ngOnInit(){
-    this.searchFormGroup=this.fb.group({
-      keyword : this.fb.control(null)
-    });
-
-    this.handleGetAllPrenotazioni();
   }
 
   handleGetAllPrenotazioni(){

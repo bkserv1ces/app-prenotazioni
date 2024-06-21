@@ -4,6 +4,7 @@ import { Prenotazione } from '../../modelli/prenotazione';
 import { PrenotazioneService } from '../../servizi/prenotazione.service';
 import { UUID } from 'angular2-uuid';
 import { BannerComponent } from '../banner/banner.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-prenotazione',
@@ -17,9 +18,9 @@ export class NewPrenotazioneComponent implements OnInit{
   private id!: string;
   submitted: boolean = false;
   prenotazioni: Array<Prenotazione> = [];
-  public prenotazione: Prenotazione = new Prenotazione("",0,'','','',0,'',false,'', false);
+  public prenotazione: Prenotazione = new Prenotazione("",0,'','','',0,'',false,'', 0);
 
-  constructor(private fb: FormBuilder, private prenotazioneService: PrenotazioneService){}
+  constructor(private fb: FormBuilder, private prenotazioneService: PrenotazioneService, private router : Router){}
 
   ngOnInit(): void {
     this.generateRandomCodice();
@@ -48,11 +49,16 @@ export class NewPrenotazioneComponent implements OnInit{
 
   generateRandomId() {
     const date = new Date();
+    
     const year = date.getFullYear().toString().slice(-4);
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
-    const randomDigits = Math.floor(1000 + Math.random() * 9000); 
-    const id = year + month + day + randomDigits.toString();
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const seconds = ('0' + date.getSeconds()).slice(-2);
+    const milliseconds = ('00' + date.getMilliseconds()).slice(-3);
+  
+    const id = year + month + day + hours + minutes + seconds + milliseconds;
     this.id = id;
   }
 
@@ -68,13 +74,13 @@ export class NewPrenotazioneComponent implements OnInit{
       this.newPrenotazioneForm.value.tipo_tavolo,
       this.newPrenotazioneForm.value.pagato,
       this.newPrenotazioneForm.value.codice_QR,
-      this.newPrenotazioneForm.value.deleted
+      0
     );
     this.prenotazioneService.addPrenotazione(newPrenotazione).subscribe({
       next : prenotazione => {
         this.prenotazioni.push(prenotazione);
         alert("Prenotazione effettuata con successo!");
-        this.newPrenotazioneForm.reset();
+        this.router.navigateByUrl("/list-prenotazione");
       },
       error : err => {
         console.log(err);

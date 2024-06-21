@@ -4,16 +4,6 @@
     <div class="container">
         <div class="row">
             <h2 class="text-white text-center mb-40">Tutte le prenotazioni</h2>
-
-<!--             <form [formGroup]="searchFormGroup" (ngSubmit)="onSearch()">
-                <div class="input-group">
-                    <label class="input-group-text">Keyword:</label>
-                    <input type="text" class="form-control" formControlName="keyword">
-                    <button class="btn btn-info">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form> -->
             <table class="rwd-table">
                 <thead>
                     <tr>
@@ -27,25 +17,25 @@
                     </tr>
                 </thead>
                 <tr *ngFor="let p of prenotazioni">
-                  <td>{{p.cliente_nome}}</td>
-                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">{{p.cliente_email}}</td>
-                  <td>{{p.numero_persone}}</td>
-                  <td>{{p.tipo_tavolo}}</td>
-                  <td>{{p.telefono}}</td>
-                  <td>{{p.pagato}}</td>
-                  <td>{{p.codice_QR}}</td>
-                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')" >
-                    <button [routerLink]="['/update-prenotazione', p.id]" class="btn btn-success">
-                        <i class="bi bi-file"></i>
-                    </button>
-                  </td>
-                  <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')" >
-                    <button (click)="handleDeletePrenotazione(p)" class="btn btn-danger">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
+                    <td>{{p.cliente_nome}}</td>
+                    <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">{{p.cliente_email}}</td>
+                    <td>{{p.numero_persone}}</td>
+                    <td>{{p.tipo_tavolo}}</td>
+                    <td>{{p.telefono}}</td>
+                    <td>{{p.pagato}}</td>
+                    <td>{{p.codice_QR}}</td>
+                    <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">
+                        <button [routerLink]="['/update-prenotazione', p.id]" class="btn btn-success">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </td>
+                    <td *ngIf="logService.isLoggato() && logService.haRuolo('ADMIN')">
+                        <button (click)="handleDeletePrenotazione(p)" class="btn btn-danger">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </td>
                 </tr>
-              </table>
+            </table>
         </div>
     </div>
 </section>

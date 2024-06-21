@@ -570,6 +570,14 @@ button.button-disabled {
   padding-top: 130px;
 }
 
+.pricing-section {
+  background-image: url('../images/amapiano.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 130px;
+}
+
 .ticket-form {
   background: var(--white-color);
   border-radius: var(--border-radius-medium);
