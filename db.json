@@ -222,6 +222,18 @@
       "pagato": false,
       "codice_QR": "ST89UV",
       "deleted": 0
+    },
+    {
+      "id": "20240623220950385",
+      "id_evento": 0,
+      "cliente_nome": "yvan",
+      "cliente_email": "yvan@gmail.com",
+      "telefono": "4512154875",
+      "numero_persone": 2,
+      "tipo_tavolo": "Standard",
+      "pagato": false,
+      "codice_QR": "0RTFSU",
+      "deleted": 1
     }
   ],
   "amministratori": [
